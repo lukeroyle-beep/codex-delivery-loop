@@ -54,13 +54,20 @@ personal skill named `github-delivery-loop`:
 SKILL.md
 agents/openai.yaml
 references/
-scripts/validate.py
+scripts/
 ```
 
 Invoke it explicitly with:
 
 ```text
 Use $github-delivery-loop in owner/repository to set up the delivery loop.
+```
+
+Where the connected GitHub interface cannot create repository labels, setup
+uses the authenticated GitHub command-line interface:
+
+```bash
+bash scripts/setup-labels.sh owner/repository
 ```
 
 Then create a specification:
