@@ -59,11 +59,11 @@ ask for `owner/repository`. Never search broadly and guess.
 Read `references/state-model.md`. Confirm the repository has an initial commit.
 Create missing labels with their documented names, descriptions, and colours;
 do not replace existing compatible labels. Prefer the connector, then
-authenticated `gh label create`. If neither can create repository labels,
-return the exact missing-label specification and stop setup without claiming
-readiness. Detect the real default branch. Check whether required continuous
-integration checks exist. Missing checks do not block setup, but they prevent
-automated `loop:approved` verdicts.
+`scripts/setup-labels.sh owner/repository` with authenticated `gh`. If neither
+can create repository labels, return the exact missing-label specification and
+stop setup without claiming readiness. Detect the real default branch. Check
+whether required continuous integration checks exist. Missing checks do not
+block setup, but they prevent automated `loop:approved` verdicts.
 
 Report any repository protection or permission gap. Do not weaken repository
 settings.
