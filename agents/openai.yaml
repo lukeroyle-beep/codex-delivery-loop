@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Delivery Loop"
+  short_description: "Run bounded GitHub issue delivery loops"
+  default_prompt: "Use $github-delivery-loop to process the approved GitHub issue queue safely."
