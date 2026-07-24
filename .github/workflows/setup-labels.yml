@@ -1,0 +1,26 @@
+name: Set up delivery loop labels
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/setup-labels.yml"
+      - "scripts/setup-labels.sh"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  labels:
+    name: Labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Create missing labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/setup-labels.sh "$GITHUB_REPOSITORY"
