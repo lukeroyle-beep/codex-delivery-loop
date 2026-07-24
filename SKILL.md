@@ -33,9 +33,10 @@ ask for `owner/repository`. Never search broadly and guess.
 
 ## Global safety rules
 
-1. Use the connected GitHub tools for issues, labels, comments, pull requests,
-   and repository reads. Use local `git` for source edits and branch work when a
-   checkout is available.
+1. Use the connected GitHub tools for supported issue, label, comment, pull
+   request, and repository actions. Use local `git` for source edits and branch
+   work when a checkout is available, and authenticated `gh` only for required
+   GitHub operations the connector does not expose.
 2. Before mutation, confirm the repository, default branch, permissions, and
    clean working tree. Stop on unrelated local changes. Never stash, reset,
    overwrite, or commit them.
@@ -57,9 +58,12 @@ ask for `owner/repository`. Never search broadly and guess.
 
 Read `references/state-model.md`. Confirm the repository has an initial commit.
 Create missing labels with their documented names, descriptions, and colours;
-do not replace existing compatible labels. Detect the real default branch.
-Check whether required continuous integration checks exist. Missing checks do
-not block setup, but they prevent automated `loop:approved` verdicts.
+do not replace existing compatible labels. Prefer the connector, then
+authenticated `gh label create`. If neither can create repository labels,
+return the exact missing-label specification and stop setup without claiming
+readiness. Detect the real default branch. Check whether required continuous
+integration checks exist. Missing checks do not block setup, but they prevent
+automated `loop:approved` verdicts.
 
 Report any repository protection or permission gap. Do not weaken repository
 settings.
