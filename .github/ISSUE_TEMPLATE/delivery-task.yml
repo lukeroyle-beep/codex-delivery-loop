@@ -1,0 +1,65 @@
+name: Delivery task
+description: Draft a contract for the Codex delivery loop
+title: ""
+labels:
+  - "loop:spec"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Complete the contract below. A human must review it and replace
+        `loop:spec` with `loop:ready` before the loop can build it.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user or operational problem.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Use observable, sequential AC-N criteria.
+      placeholder: |
+        - [ ] AC-1: Observable outcome
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: Use binding, sequential NG-N exclusions.
+      placeholder: |
+        - NG-1: Behaviour that must not change
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Relevant files
+      description: List known files and why they matter.
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: Give numbered steps covering every acceptance criterion.
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk
+      options:
+        - Low
+        - Medium
+        - High
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: State None or link blocking issues.
+    validations:
+      required: true
