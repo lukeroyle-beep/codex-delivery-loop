@@ -14,6 +14,10 @@ REQUIRED_REFERENCES = {
     "references/state-model.md",
     "references/review-policy.md",
 }
+REQUIRED_SCRIPTS = {
+    "scripts/setup-labels.sh",
+    "scripts/validate.py",
+}
 PRIMARY_LABELS = {
     "loop:spec",
     "loop:ready",
@@ -65,6 +69,10 @@ def validate_package(root: Path) -> None:
             fail(f"Missing {relative}")
         if relative not in text:
             fail(f"SKILL.md does not route to {relative}")
+
+    for relative in sorted(REQUIRED_SCRIPTS):
+        if not (root / relative).is_file():
+            fail(f"Missing {relative}")
 
     state_text = (root / "references/state-model.md").read_text(encoding="utf-8")
     absent = sorted(label for label in PRIMARY_LABELS if label not in state_text)
